@@ -1,0 +1,268 @@
+{
+	"info": {
+		"_postman_id": "1edb39d1-57ee-4a66-987c-b0cbec66a187",
+		"name": "Kong client cerdential",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8001/services/",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"ms-user-repo\",\n    \"url\":\"http://192.168.0.111:8080\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/services/ms-user-repo/routes",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"hosts\": [\"service1.com\"],\n    \"paths\":[\"/service1\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/ms-user-repo/routes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						"ms-user-repo",
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.0.111:8000/service1/getAllUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "service1.com",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://192.168.0.111:8000/service1/getAllUsers",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"111"
+					],
+					"port": "8000",
+					"path": [
+						"service1",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/services/ms-user-repo/plugins",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"oauth2\",\n    \"config\": {\"enable_client_credentials\":true}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/services/ms-user-repo/plugins",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"services",
+						"ms-user-repo",
+						"plugins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/consumers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"username\":\"user123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/consumers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"consumers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8001/consumers/user123/oauth2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\" : \"msuserrepo-app\",\n\"client_id\": \"user_cid\",\n\"client_secret\": \"nsdl@123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8001/consumers/user123/oauth2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"consumers",
+						"user123",
+						"oauth2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "https://localhost:8443/service1/getAllUsers/oauth2/token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Host",
+						"value": "service1.com",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"client_id\": \"user_cid\",\n\"client_secret\": \"nsdl@123\",\n\"grant_type\":\"client_credentials\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:8443/service1/getAllUsers/oauth2/token",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "8443",
+					"path": [
+						"service1",
+						"getAllUsers",
+						"oauth2",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://192.168.0.111:8000/service1/getAllUsers",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Host",
+						"value": "service1.com",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "3jt9WHMCJtHubjall6GHyRgPB6pvCIrT",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://192.168.0.111:8000/service1/getAllUsers",
+					"protocol": "http",
+					"host": [
+						"192",
+						"168",
+						"0",
+						"111"
+					],
+					"port": "8000",
+					"path": [
+						"service1",
+						"getAllUsers"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
